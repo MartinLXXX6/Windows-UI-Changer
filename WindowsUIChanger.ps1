@@ -91,10 +91,6 @@ function StartMenuPrograms {
     Start-Process "shell:user pinned"
 }
 function Add3DObjects {
-    Stop-Process -Name explorer -Force
-
-    Start-Sleep -Seconds 2
-
 # Check if the "3D Objects" folder exists in the user's profile, if not, create it
 
     $threeDObjectsPath = "$env:UserProfile\3D Objects"
@@ -122,11 +118,102 @@ function Add3DObjects {
         New-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -ItemType Directory
     }
 
-# Wait for 1 second
-    Start-Sleep -Seconds 3
+    # Stop the explorer.exe process
+    Stop-Process -Name explorer -Force
 
-# Start the explorer.exe process
-    Start-Process explorer.exe
+    # Wait for a few seconds to ensure the process has fully stopped
+    Start-Sleep -Seconds 5
+
+    # Restart the explorer shell
+    Start-Process -FilePath "explorer.exe" -ArgumentList "/factory,{682159d9-c321-47ca-b3f1-30e36b2ec8b9} -Embedding"
+}
+function StandardTB{
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowCopilotButton" -Value "1" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowCortanaButton" -Value "1" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Value "1" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarGlomLevel" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "SearchboxTaskbarMode" -Value "2" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value "1" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "IsLocationTurnedOn" -Value "1" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Value "1" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarOpenOnHover" -Value "1" -Type Dword
+    
+
+    # Stop the explorer.exe process
+    Stop-Process -Name explorer -Force
+
+    # Wait for a few seconds to ensure the process has fully stopped
+    Start-Sleep -Seconds 5
+
+    # Restart the explorer shell
+    Start-Process -FilePath "explorer.exe" -ArgumentList "/factory,{682159d9-c321-47ca-b3f1-30e36b2ec8b9} -Embedding"
+}
+function DeblotedTB{
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowCopilotButton" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowCortanaButton" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarGlomLevel" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "SearchboxTaskbarMode" -Value "2" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Value "2" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "IsLocationTurnedOn" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarOpenOnHover" -Value "0" -Type Dword
+    
+    
+    # Stop the explorer.exe process
+    Stop-Process -Name explorer -Force
+
+    # Wait for a few seconds to ensure the process has fully stopped
+    Start-Sleep -Seconds 5
+
+    # Restart the explorer shell
+    Start-Process -FilePath "explorer.exe" -ArgumentList "/factory,{682159d9-c321-47ca-b3f1-30e36b2ec8b9} -Embedding"
+}
+function ProductivityTB{
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowCopilotButton" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowCortanaButton" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarGlomLevel" -Value "2" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "SearchboxTaskbarMode" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Value "2" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "IsLocationTurnedOn" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarOpenOnHover" -Value "0" -Type Dword
+    
+    
+    # Stop the explorer.exe process
+    Stop-Process -Name explorer -Force
+
+    # Wait for a few seconds to ensure the process has fully stopped
+    Start-Sleep -Seconds 5
+
+    # Restart the explorer shell
+    Start-Process -FilePath "explorer.exe" -ArgumentList "/factory,{682159d9-c321-47ca-b3f1-30e36b2ec8b9} -Embedding"
+}
+function SimplicityTB{
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowCopilotButton" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowCortanaButton" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Value "1" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarGlomLevel" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "SearchboxTaskbarMode" -Value "1" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Value "2" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "IsLocationTurnedOn" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarOpenOnHover" -Value "0" -Type Dword
+    
+    
+    # Stop the explorer.exe process
+    Stop-Process -Name explorer -Force
+
+    # Wait for a few seconds to ensure the process has fully stopped
+    Start-Sleep -Seconds 5
+
+    # Restart the explorer shell
+    Start-Process -FilePath "explorer.exe" -ArgumentList "/factory,{682159d9-c321-47ca-b3f1-30e36b2ec8b9} -Embedding"
 }
 
 # Form Properties
@@ -228,14 +315,46 @@ $3DObjLabel.Font = 'Segoe,12'
 $3DObjLabel.ForeColor = 'LightGray'
 
 $PresetsLabel = New-Object $LabelObject
-$PresetsLabel.Location = New-Object System.Drawing.Point(249, 392)
+$PresetsLabel.Location = New-Object System.Drawing.Point(200, 379)
 $PresetsLabel.Text = 'TASKBAR PRESETS'
 $PresetsLabel.AutoSize = $true
-$PresetsLabel.Font = 'Segoe,12'
+$PresetsLabel.Font = 'Segoe,20'
 $PresetsLabel.ForeColor = 'LightGray'
 
+$Preset1Button = New-Object $ButtonObject
+$Preset1Button.Size = '303, 38'
+$Preset1Button.Location = New-Object System.Drawing.Point(13, 450)
+$Preset1Button.Text = 'Standard'
+$Preset1Button.Cursor = 'Hand'
+$Preset1Button.Font = 'Segoe,12'
+$Preset1Button.Add_Click({StandardTB})
+
+$Preset2Button = New-Object $ButtonObject
+$Preset2Button.Size = '303, 38'
+$Preset2Button.Location = New-Object System.Drawing.Point(318, 450)
+$Preset2Button.Text = 'Standard: Debloted'
+$Preset2Button.Cursor = 'Hand'
+$Preset2Button.Font = 'Segoe,12'
+$Preset2Button.Add_Click({DeblotedTB})
+
+$Preset3Button = New-Object $ButtonObject
+$Preset3Button.Size = '303, 38'
+$Preset3Button.Location = New-Object System.Drawing.Point(13, 520)
+$Preset3Button.Text = 'Custom: Productivity'
+$Preset3Button.Cursor = 'Hand'
+$Preset3Button.Font = 'Segoe,12'
+$Preset3Button.Add_Click({ProductivityTB})
+
+$Preset4Button = New-Object $ButtonObject
+$Preset4Button.Size = '303, 38'
+$Preset4Button.Location = New-Object System.Drawing.Point(318, 520)
+$Preset4Button.Text = 'Custom: Simplicity'
+$Preset4Button.Cursor = 'Hand'
+$Preset4Button.Font = 'Segoe,12'
+$Preset4Button.Add_Click({SimplicityTB})
+
 # Show On Display
-$MainForm.Controls.AddRange(@($ThemeButton,$AdvTaskSettingsButton,$AdvTaskSettingsLabel,$AnimAndPerfButton,$AnimAndPerfLabel,$VersionLabel,$StartMenuLocationButton,$StartMenuLabel,$3DObjButton,$3DObjLabel,$PresetsLabel,$BILabel))
+$MainForm.Controls.AddRange(@($ThemeButton,$AdvTaskSettingsButton,$AdvTaskSettingsLabel,$AnimAndPerfButton,$AnimAndPerfLabel,$VersionLabel,$StartMenuLocationButton,$StartMenuLabel,$3DObjButton,$3DObjLabel,$PresetsLabel,$BILabel,$Preset1Button,$Preset3Button,$Preset2Button,$Preset4Button))
 
 $MainForm.ShowDialog()
 $MainForm.Dispose()
