@@ -31,17 +31,10 @@ $global:DarkMode = $true
 # Functions
 function ViewModeChanger {
     param (
-        [ref]$MainForm,
-        [ref]$ThemeButton,
-        [ref]$DarkMode,
-        [ref]$AdvTaskSettingsLabel,
-        [ref]$AnimAndPerfLabel,
-        [ref]$VersionLabel,
-        [ref]$StartMenuLabel,
-        [ref]$3DObjButton,
-        [ref]$PresetsLabel,
-        [ref]$BILabel,
-        [ref]$3DObjLabel
+        [ref]$MainForm,[ref]$ThemeButton,[ref]$DarkMode,[ref]$AdvTaskSettingsLabel,[ref]$AnimAndPerfLabel,[ref]$VersionLabel,[ref]$StartMenuLabel,[ref]$3DObjButton,
+        [ref]$PresetsLabel,[ref]$BILabel,[ref]$3DObjLabel,[ref]$AdvTaskSettingsButton,[ref]$AnimAndPerfButton,[ref]$StartMenuLocationButton,[ref]$EnableOldContextMenuButton,
+        [ref]$DisableOldContextMenuButton,[ref]$PresetsWindowsLabel,[ref]$ContextMenuLabel,[ref]$Preset1Button,[ref]$Preset2Button,[ref]$Preset3Button,[ref]$Preset4Button,
+        [ref]$UISettingsLabel
     )
 
     if ($DarkMode.Value -eq $true) {
@@ -50,6 +43,7 @@ function ViewModeChanger {
 
         $ThemeButton.Value.Text = 'Dark Theme'
 
+        $ThemeButton.Value.ForeColor = 'Black'
         $AdvTaskSettingsLabel.Value.ForeColor = 'Black'
         $AnimAndPerfLabel.Value.ForeColor = 'Black'
         $VersionLabel.Value.ForeColor = 'Black'
@@ -58,6 +52,18 @@ function ViewModeChanger {
         $PresetsLabel.Value.ForeColor = 'Black'
         $BILabel.Value.ForeColor = 'Black'
         $3DObjLabel.Value.ForeColor = 'Black'
+        $AdvTaskSettingsButton.Value.ForeColor = 'Black'
+        $AnimAndPerfButton.Value.ForeColor = 'Black'
+        $StartMenuLocationButton.Value.ForeColor = 'Black'
+        $EnableOldContextMenuButton.Value.ForeColor = 'Black'
+        $DisableOldContextMenuButton.Value.ForeColor = 'Black'
+        $PresetsWindowsLabel.Value.ForeColor = 'Black'
+        $ContextMenuLabel.Value.ForeColor = 'Black'
+        $Preset1Button.Value.ForeColor = 'Black'
+        $Preset2Button.Value.ForeColor = 'Black'
+        $Preset3Button.Value.ForeColor = 'Black'
+        $Preset4Button.Value.ForeColor = 'Black'
+        $UISettingsLabel.Value.ForeColor = 'Black'
 
         $DarkMode.Value = $false
     }
@@ -71,10 +77,24 @@ function ViewModeChanger {
         $AnimAndPerfLabel.Value.ForeColor = 'LightGray'
         $VersionLabel.Value.ForeColor = 'LightGray'
         $StartMenuLabel.Value.ForeColor = 'LightGray'
-        $3DObjButton.Value.ForeColor = 'LightGray'
         $PresetsLabel.Value.ForeColor = 'LightGray'
         $BILabel.Value.ForeColor = 'LightGray'
         $3DObjLabel.Value.ForeColor = 'LightGray'
+        $PresetsWindowsLabel.Value.ForeColor = 'LightGray'
+        $ContextMenuLabel.Value.ForeColor = 'LightGray'
+        $UISettingsLabel.Value.ForeColor = 'LightGray'
+        
+        $ThemeButton.Value.ForeColor = 'Control'
+        $3DObjButton.Value.ForeColor = 'Control'
+        $AdvTaskSettingsButton.Value.ForeColor = 'Control'
+        $AnimAndPerfButton.Value.ForeColor = 'Control'
+        $StartMenuLocationButton.Value.ForeColor = 'Control'
+        $EnableOldContextMenuButton.Value.ForeColor = 'Control'
+        $DisableOldContextMenuButton.Value.ForeColor = 'Control'
+        $Preset1Button.Value.ForeColor = 'Control'
+        $Preset2Button.Value.ForeColor = 'Control'
+        $Preset3Button.Value.ForeColor = 'Control'
+        $Preset4Button.Value.ForeColor = 'Control'
 
         $DarkMode.Value = $true
     }
@@ -138,6 +158,7 @@ function StandardTB{
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "IsLocationTurnedOn" -Value "1" -Type Dword
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Value "1" -Type Dword
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarOpenOnHover" -Value "1" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Value "1" -Type Dword
     
 
     # Stop the explorer.exe process
@@ -160,6 +181,7 @@ function DeblotedTB{
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "IsLocationTurnedOn" -Value "0" -Type Dword
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Value "0" -Type Dword
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarOpenOnHover" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Value "0" -Type Dword
     
     
     # Stop the explorer.exe process
@@ -182,6 +204,7 @@ function ProductivityTB{
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "IsLocationTurnedOn" -Value "0" -Type Dword
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Value "0" -Type Dword
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarOpenOnHover" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Value "0" -Type Dword
     
     
     # Stop the explorer.exe process
@@ -204,6 +227,7 @@ function SimplicityTB{
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "IsLocationTurnedOn" -Value "0" -Type Dword
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PenWorkspace" -Name "PenWorkspaceButtonDesiredVisibility" -Value "0" -Type Dword
     Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarOpenOnHover" -Value "0" -Type Dword
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Value "0" -Type Dword
     
     
     # Stop the explorer.exe process
@@ -214,6 +238,37 @@ function SimplicityTB{
 
     # Restart the explorer shell
     Start-Process -FilePath "explorer.exe" -ArgumentList "/factory,{682159d9-c321-47ca-b3f1-30e36b2ec8b9} -Embedding"
+}
+function EnableOldContextMenu{
+    if (-Not (Test-Path -Path "HKCU:\SOFTWARE\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32")) {
+        New-Item -Path "HKCU:\SOFTWARE\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -ItemType Directory -Force
+    }
+
+    Set-ItemProperty -Path "HKCU:\SOFTWARE\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Name "(Default)" -Value ""
+
+        # Stop the explorer.exe process
+        Stop-Process -Name explorer -Force
+
+        # Wait for a few seconds to ensure the process has fully stopped
+        Start-Sleep -Seconds 5
+    
+        # Restart the explorer shell
+        Start-Process -FilePath "explorer.exe" -ArgumentList "/factory,{682159d9-c321-47ca-b3f1-30e36b2ec8b9} -Embedding"
+}
+function DisableOldContextMenu{
+    if (Test-Path -Path "HKCU:\SOFTWARE\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32") {
+        Remove-Item -Path "HKCU:\SOFTWARE\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -Force
+        Remove-Item -Path "HKCU:\SOFTWARE\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Force
+    }
+
+        # Stop the explorer.exe process
+        Stop-Process -Name explorer -Force
+
+        # Wait for a few seconds to ensure the process has fully stopped
+        Start-Sleep -Seconds 5
+    
+        # Restart the explorer shell
+        Start-Process -FilePath "explorer.exe" -ArgumentList "/factory,{682159d9-c321-47ca-b3f1-30e36b2ec8b9} -Embedding"
 }
 
 # Form Properties
@@ -238,7 +293,7 @@ $ThemeButton.Text = 'Light Theme'
 $ThemeButton.Font = 'Segoe,12'
 $ThemeButton.Cursor = 'Hand'
 $ThemeButton.Add_Click({
-    ViewModeChanger ([ref]$MainForm) ([ref]$ThemeButton) ([ref]$DarkMode) ([ref]$AdvTaskSettingsLabel) ([ref]$AnimAndPerfLabel) ([ref]$VersionLabel) ([ref]$StartMenuLabel) ([ref]$3DObjButton) ([ref]$PresetsLabel) ([ref]$BILabel) ([ref]$3DObjLabel)
+    ViewModeChanger ([ref]$MainForm) ([ref]$ThemeButton) ([ref]$DarkMode) ([ref]$AdvTaskSettingsLabel) ([ref]$AnimAndPerfLabel) ([ref]$VersionLabel) ([ref]$StartMenuLabel) ([ref]$3DObjButton) ([ref]$PresetsLabel) ([ref]$BILabel) ([ref]$3DObjLabel) ([ref]$AdvTaskSettingsButton) ([ref]$AnimAndPerfButton) ([ref]$StartMenuLocationButton) ([ref]$EnableOldContextMenuButton) ([ref]$DisableOldContextMenuButton) ([ref]$PresetsWindowsLabel) ([ref]$ContextMenuLabel) ([ref]$Preset1Button) ([ref]$Preset2Button) ([ref]$Preset3Button) ([ref]$Preset4Button) ([ref]$UISettingsLabel)
 })
 
 $VersionLabel = New-Object $LabelObject
@@ -254,6 +309,13 @@ $BILabel.Text = 'Built-in and reversible features'
 $BILabel.AutoSize = $true
 $BILabel.Font = 'Segoe,12'
 $BILabel.ForeColor = 'LightGray'
+
+$UISettingsLabel = New-Object $LabelObject
+$UISettingsLabel.Location = New-Object System.Drawing.Point(190, 40)
+$UISettingsLabel.Text = 'GENERAL SETTINGS'
+$UISettingsLabel.AutoSize = $true
+$UISettingsLabel.Font = 'Segoe,20,style=Bold'
+$UISettingsLabel.ForeColor = 'LightGray'
 
 $AdvTaskSettingsButton = New-Object $ButtonObject
 $AdvTaskSettingsButton.Size = '606, 38'
@@ -314,16 +376,45 @@ $3DObjLabel.AutoSize = $true
 $3DObjLabel.Font = 'Segoe,12'
 $3DObjLabel.ForeColor = 'LightGray'
 
+$EnableOldContextMenuButton = New-Object $ButtonObject
+$EnableOldContextMenuButton.Size = '303, 38'
+$EnableOldContextMenuButton.Location = New-Object System.Drawing.Point(13, 384)
+$EnableOldContextMenuButton.Text = 'Enable Old Context Menu'
+$EnableOldContextMenuButton.Cursor = 'Hand'
+$EnableOldContextMenuButton.Font = 'Segoe,12'
+$EnableOldContextMenuButton.Add_Click({EnableOldContextMenu})
+
+$DisableOldContextMenuButton = New-Object $ButtonObject
+$DisableOldContextMenuButton.Size = '303, 38'
+$DisableOldContextMenuButton.Location = New-Object System.Drawing.Point(318, 384)
+$DisableOldContextMenuButton.Text = 'Disable Old Context Menu'
+$DisableOldContextMenuButton.Cursor = 'Hand'
+$DisableOldContextMenuButton.Font = 'Segoe,12'
+$DisableOldContextMenuButton.Add_Click({DisableOldContextMenu})
+
+$ContextMenuLabel = New-Object $LabelObject
+$ContextMenuLabel.Location = New-Object System.Drawing.Point(270, 426)
+$ContextMenuLabel.Text = 'Windows 11'
+$ContextMenuLabel.Font = 'Segoe,12'
+$ContextMenuLabel.ForeColor = 'LightGray'
+
 $PresetsLabel = New-Object $LabelObject
-$PresetsLabel.Location = New-Object System.Drawing.Point(200, 379)
+$PresetsLabel.Location = New-Object System.Drawing.Point(190, 470)
 $PresetsLabel.Text = 'TASKBAR PRESETS'
 $PresetsLabel.AutoSize = $true
-$PresetsLabel.Font = 'Segoe,20'
+$PresetsLabel.Font = 'Segoe,20,style=Bold'
 $PresetsLabel.ForeColor = 'LightGray'
+
+$PresetsWindowsLabel = New-Object $LabelObject
+$PresetsWindowsLabel.Location = New-Object System.Drawing.Point(250, 525)
+$PresetsWindowsLabel.Text = 'Windows 10 && 11'
+$PresetsWindowsLabel.AutoSize = $true
+$PresetsWindowsLabel.Font = 'Segoe,12'
+$PresetsWindowsLabel.ForeColor = 'LightGray'
 
 $Preset1Button = New-Object $ButtonObject
 $Preset1Button.Size = '303, 38'
-$Preset1Button.Location = New-Object System.Drawing.Point(13, 450)
+$Preset1Button.Location = New-Object System.Drawing.Point(13, 560)
 $Preset1Button.Text = 'Standard'
 $Preset1Button.Cursor = 'Hand'
 $Preset1Button.Font = 'Segoe,12'
@@ -331,7 +422,7 @@ $Preset1Button.Add_Click({StandardTB})
 
 $Preset2Button = New-Object $ButtonObject
 $Preset2Button.Size = '303, 38'
-$Preset2Button.Location = New-Object System.Drawing.Point(318, 450)
+$Preset2Button.Location = New-Object System.Drawing.Point(318, 560)
 $Preset2Button.Text = 'Standard: Debloted'
 $Preset2Button.Cursor = 'Hand'
 $Preset2Button.Font = 'Segoe,12'
@@ -339,7 +430,7 @@ $Preset2Button.Add_Click({DeblotedTB})
 
 $Preset3Button = New-Object $ButtonObject
 $Preset3Button.Size = '303, 38'
-$Preset3Button.Location = New-Object System.Drawing.Point(13, 520)
+$Preset3Button.Location = New-Object System.Drawing.Point(13, 610)
 $Preset3Button.Text = 'Custom: Productivity'
 $Preset3Button.Cursor = 'Hand'
 $Preset3Button.Font = 'Segoe,12'
@@ -347,14 +438,14 @@ $Preset3Button.Add_Click({ProductivityTB})
 
 $Preset4Button = New-Object $ButtonObject
 $Preset4Button.Size = '303, 38'
-$Preset4Button.Location = New-Object System.Drawing.Point(318, 520)
+$Preset4Button.Location = New-Object System.Drawing.Point(318, 610)
 $Preset4Button.Text = 'Custom: Simplicity'
 $Preset4Button.Cursor = 'Hand'
 $Preset4Button.Font = 'Segoe,12'
 $Preset4Button.Add_Click({SimplicityTB})
 
 # Show On Display
-$MainForm.Controls.AddRange(@($ThemeButton,$AdvTaskSettingsButton,$AdvTaskSettingsLabel,$AnimAndPerfButton,$AnimAndPerfLabel,$VersionLabel,$StartMenuLocationButton,$StartMenuLabel,$3DObjButton,$3DObjLabel,$PresetsLabel,$BILabel,$Preset1Button,$Preset3Button,$Preset2Button,$Preset4Button))
+$MainForm.Controls.AddRange(@($ThemeButton,$AdvTaskSettingsButton,$AdvTaskSettingsLabel,$AnimAndPerfButton,$AnimAndPerfLabel,$VersionLabel,$StartMenuLocationButton,$StartMenuLabel,$3DObjButton,$3DObjLabel,$PresetsLabel,$BILabel,$Preset1Button,$Preset3Button,$Preset2Button,$Preset4Button,$EnableOldContextMenuButton,$DisableOldContextMenuButton,$ContextMenuLabel,$PresetsWindowsLabel,$UISettingsLabel))
 
 $MainForm.ShowDialog()
 $MainForm.Dispose()
