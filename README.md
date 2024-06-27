@@ -6,6 +6,7 @@ Features Available:
 - Enable 3D objects folder in File Explorer
 - Enable/disable windows 10 context menu
 - Apply custom taskbar presets
+Note: All of these are registry changes making them reversible features and not using third party software. Enjoy
 
 # HOW TO RUN .PS1 FILES
 FIRST METHOD:
