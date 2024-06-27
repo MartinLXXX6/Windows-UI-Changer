@@ -1,3 +1,12 @@
+# OVERVIEW
+Features Available:
+- Customization of taskbar icons (Volume, Notificacion Centre, Clock etc)
+- View all startmenu and taskbar shortcuts and cuztomize them
+- Remove/add windows animations
+- Enable 3D objects folder in File Explorer
+- Enable/disable windows 10 context menu
+- Apply custom taskbar presets
+
 # HOW TO RUN .PS1 FILES
 FIRST METHOD:
 - Right click the .ps1 file and click "Run with PowerShell"
