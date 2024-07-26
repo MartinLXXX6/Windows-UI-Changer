@@ -2,9 +2,9 @@
 Features Available:
 - Customization of taskbar icons (Volume, Notificacion Centre, Clock etc). (Win10 only)
 - View all startmenu and taskbar shortcuts and customize them.
-- Remove/add windows animations.
+- Remove/add advanced animations.
 - Enable 3D objects folder in File Explorer.
-- Enable/disable windows 10 context menu. (Win11 only)
+- Enable/disable Windows 10 context menu. (Win11 only)
 - Apply custom taskbar presets.
 
 Note: All of these are registry changes, making them reversible features and not using third party software. Enjoy
