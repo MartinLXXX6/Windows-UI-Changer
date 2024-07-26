@@ -10,9 +10,9 @@ Features Available:
 Note: All of these are registry changes, making them reversible features and not using third party software. Enjoy
 
 # HOW TO RUN .PS1 FILES
-FIRST METHOD:
+FIRST METHOD (Windows 10 only):
 - Right click the .ps1 file and click "Run with PowerShell"
-- Now go over the SmartScreen prompts if necessary. (Note: In Windows 11 you need to show all the details to see the "RUN" button).
+- Now go over the SmartScreen prompts if necessary. (Note: You need to show all the details to see the "RUN" button).
 - Enjoy the script!!
 
 SECOND METHOD:
